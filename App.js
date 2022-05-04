@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, SafeAreaView, Text, View } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import { NavigationContainer } from "@react-navigation/native";
 
-import CategoriesScreen from "./screens/CategoriesScreen";
+import MealsNavigator from "./navigations/MealsNavigator";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -15,7 +15,7 @@ const fetchFonts = () => {
 
 export default function App() {
   const [fontLoading, setFontLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [_, setError] = useState("");
 
   if (!fontLoading) {
     return (
@@ -28,15 +28,8 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <CategoriesScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <MealsNavigator />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-});

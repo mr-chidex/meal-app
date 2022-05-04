@@ -9,11 +9,11 @@ import {
 
 import { CATEGORIES } from "../data/data";
 
-const renderItems = ({ item }) => (
+const renderItems = (item, navigation) => (
   <TouchableOpacity
     activeOpacity={0.6}
-    style={styles.card}
-    onPress={() => console.log(item.color)}
+    style={{ ...styles.card, backgroundColor: item.color }}
+    onPress={() => navigation.push("CategoryMeals", { data: item })}
   >
     <View>
       <Text>{item.title}</Text>
@@ -21,14 +21,14 @@ const renderItems = ({ item }) => (
   </TouchableOpacity>
 );
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }) => {
   return (
     <View>
       <FlatList
         numColumns={2}
         data={CATEGORIES}
         keyExtractor={(category) => category.id}
-        renderItem={renderItems}
+        renderItem={({ item }) => renderItems(item, navigation)}
       />
     </View>
   );
