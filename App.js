@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { StyleSheet, SafeAreaView, Text, View } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
 
-import MealsNavigator from "./navigations/MealsNavigator";
+import MealsTabNavigation from "./navigations/MealsTabNavigation";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,7 +28,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <MealsNavigator />
+      <MealsTabNavigation />
     </NavigationContainer>
   );
 }

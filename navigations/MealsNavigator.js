@@ -1,8 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Platform, Text } from "react-native";
+import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import HeaderBtn from "../components/HeaderButton";
 
+import HeaderBtn from "../components/HeaderButton";
 import colors from "../constants/colors";
 import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoryMealsScreen from "../screens/CategoryMealsScreen";
