@@ -7,6 +7,8 @@ import {
 } from "react-native";
 import React from "react";
 
+import DefaultText from "./DefaultText";
+
 const MealItem = ({ onSelect, item }) => {
   return (
     <View style={styles.mealItem}>
@@ -29,9 +31,9 @@ const MealItem = ({ onSelect, item }) => {
             </ImageBackground>
           </View>
           <View style={{ ...styles.mealRow, ...styles.mealDetails }}>
-            <Text>{item.duration}m</Text>
-            <Text>{item.complexity?.toUpperCase()}</Text>
-            <Text>{item.affordability?.toUpperCase()}</Text>
+            <DefaultText>{item.duration}m</DefaultText>
+            <DefaultText>{item.complexity?.toUpperCase()}</DefaultText>
+            <DefaultText>{item.affordability?.toUpperCase()}</DefaultText>
           </View>
         </View>
       </TouchableOpacity>
