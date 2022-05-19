@@ -20,7 +20,11 @@ const FavoriteNavigation = () => {
         headerTintColor: Platform.OS === "android" ? "white" : colors.primary,
       }}
     >
-      <Stack.Screen name="Favorites" component={FavouriteScreen} />
+      <Stack.Screen
+        name="Favorites"
+        options={{ title: "My Favorites" }}
+        component={FavouriteScreen}
+      />
       <Stack.Screen
         name="MealDetails"
         options={({ route }) => ({
