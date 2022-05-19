@@ -3,9 +3,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { Platform } from "react-native";
 
-import FavouriteScreen from "../screens/FavouriteScreen";
 import MealsNavigator from "./MealsNavigator";
 import colors from "../constants/colors";
+import FavoriteNavigation from "./FavoriteNavigation";
 
 const Tab =
   Platform.OS === "android"
@@ -35,7 +35,7 @@ const MealsTabNavigation = () => {
       />
       <Tab.Screen
         name="Favorite"
-        component={FavouriteScreen}
+        component={FavoriteNavigation}
         options={{
           tabBarIcon: ({ color, size }) => {
             return <Ionicons name="ios-star" size={size} color={color} />;
