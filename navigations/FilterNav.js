@@ -32,6 +32,15 @@ const FilterNav = () => {
               />
             </HeaderButtons>
           ),
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderBtn}>
+              <Item
+                title="Save"
+                iconName="ios-save"
+                onPress={() => console.log("saving...")}
+              />
+            </HeaderButtons>
+          ),
         })}
       />
     </Stack.Navigator>

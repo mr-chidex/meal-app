@@ -51,7 +51,11 @@ const MealsNavigator = () => {
       <Stack.Screen
         name="MealDetails"
         options={({ route }) => ({
-          title: `${route?.params?.mealTitle}`,
+          title: `${
+            route?.params?.mealTitle?.length > 20
+              ? route?.params?.mealTitle?.substring(0, 20) + "..."
+              : route?.params?.mealTitle
+          }`,
           headerRight: () => (
             <HeaderButtons HeaderButtonComponent={HeaderBtn}>
               <Item
