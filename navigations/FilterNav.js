@@ -4,12 +4,11 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import HeaderBtn from "../components/HeaderButton";
 import colors from "../constants/colors";
-import FavouriteScreen from "../screens/FavouriteScreen";
-import MealDetailsScreen from "../screens/MealDetailsScreen";
+import FilterScreen from "../screens/FilterScreen";
 
 const Stack = createStackNavigator();
 
-const FavoriteNavigation = () => {
+const FilterNav = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -21,14 +20,13 @@ const FavoriteNavigation = () => {
       }}
     >
       <Stack.Screen
-        name="Favorites"
-        component={FavouriteScreen}
+        name="Filter"
+        component={FilterScreen}
         options={({ navigation }) => ({
-          title: "My Favorites",
           headerLeft: () => (
             <HeaderButtons HeaderButtonComponent={HeaderBtn}>
               <Item
-                title="Favorite"
+                title="Filters"
                 iconName="ios-menu"
                 onPress={() => navigation.toggleDrawer()}
               />
@@ -36,24 +34,8 @@ const FavoriteNavigation = () => {
           ),
         })}
       />
-      <Stack.Screen
-        name="MealDetails"
-        options={({ route }) => ({
-          title: `${route?.params?.mealTitle}`,
-          headerRight: () => (
-            <HeaderButtons HeaderButtonComponent={HeaderBtn}>
-              <Item
-                title="Favorite"
-                iconName="ios-star-outline"
-                onPress={() => console.log("mark as favorite")}
-              />
-            </HeaderButtons>
-          ),
-        })}
-        component={MealDetailsScreen}
-      />
     </Stack.Navigator>
   );
 };
 
-export default FavoriteNavigation;
+export default FilterNav;

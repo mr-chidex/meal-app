@@ -3,7 +3,7 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
 
-import MealsTabNavigation from "./navigations/MealsTabNavigation";
+import SideDrawer from "./navigations/SideDrawer";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <MealsTabNavigation />
+      <SideDrawer />
     </NavigationContainer>
   );
 }

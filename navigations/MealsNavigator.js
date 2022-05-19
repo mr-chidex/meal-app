@@ -19,9 +19,28 @@ const MealsNavigator = () => {
           backgroundColor: Platform.OS === "android" ? colors.primary : "",
         },
         headerTintColor: Platform.OS === "android" ? "white" : colors.primary,
+        headerTitleStyle: {
+          fontFamily: "OpenSans-Bold",
+        },
+        headerBackTitleStyle: { fontFamily: "OpenSans" },
       }}
     >
-      <Stack.Screen name="Categories" component={CategoriesScreen} />
+      <Stack.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={({ navigation }) => ({
+          title: "Meal Categories",
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderBtn}>
+              <Item
+                title="Menu"
+                iconName="ios-menu"
+                onPress={() => navigation.toggleDrawer()}
+              />
+            </HeaderButtons>
+          ),
+        })}
+      />
       <Stack.Screen
         name="CategoryMeals"
         component={CategoryMealsScreen}
