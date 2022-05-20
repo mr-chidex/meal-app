@@ -1,1 +1,2 @@
 export const TOGGLE_FAVORITE = "TOGGLE_FAVORITE";
+export const SET_FILTER = "SET_FILTER";
