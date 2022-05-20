@@ -37,7 +37,7 @@ const MealsTabNavigation = () => {
               "Meals"
             ),
         }}
-        name="Meals"
+        name="Meal"
         component={MealsNavigator}
       />
       <Tab.Screen

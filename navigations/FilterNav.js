@@ -22,7 +22,7 @@ const FilterNav = () => {
       <Stack.Screen
         name="Filter"
         component={FilterScreen}
-        options={({ navigation }) => ({
+        options={({ navigation, route }) => ({
           headerLeft: () => (
             <HeaderButtons HeaderButtonComponent={HeaderBtn}>
               <Item
@@ -32,15 +32,21 @@ const FilterNav = () => {
               />
             </HeaderButtons>
           ),
-          headerRight: () => (
-            <HeaderButtons HeaderButtonComponent={HeaderBtn}>
-              <Item
-                title="Save"
-                iconName="ios-save"
-                onPress={() => console.log("saving...")}
-              />
-            </HeaderButtons>
-          ),
+          headerRight: () => {
+            return (
+              <HeaderButtons HeaderButtonComponent={HeaderBtn}>
+                <Item
+                  title="Save"
+                  iconName="ios-save"
+                  onPress={() => {
+                    const saveHandler = route.params?.save;
+                    saveHandler();
+                    console.log("saving...");
+                  }}
+                />
+              </HeaderButtons>
+            );
+          },
         })}
       />
     </Stack.Navigator>
