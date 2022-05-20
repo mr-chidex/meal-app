@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 import MealList from "../components/MealList";
+import DefaultView from "../components/DefaultView";
 
 const CategoryMealsScreen = ({ navigation, route }) => {
   const { data } = route.params;
@@ -15,7 +16,9 @@ const CategoryMealsScreen = ({ navigation, route }) => {
   );
 
   return categoryMeals?.length === 0 ? (
-    <Text style={styles.text}>You have no meals for this category!</Text>
+    <DefaultView>
+      You have no meals for this category!. Check your filters
+    </DefaultView>
   ) : (
     <MealList listData={categoryMeals} navigation={navigation} />
   );
