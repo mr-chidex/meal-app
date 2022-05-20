@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useDispatch } from "react-redux";
+
 import FilterSwitch from "../components/FilterSwitch";
+import { setFilters } from "../store/actions/mealActions";
 
 const FilterScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [isGlutenFree, setIsGlutenFree] = useState(false);
   const [isVegan, setIsVegan] = useState(false);
   const [isLactose, setIsLactose] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
-
-  // console.log({ isGlutenFree, isVegan, isLactose, isVegetarian });
 
   const saveHandler = useCallback(() => {
     const appledFilters = {
@@ -18,7 +20,7 @@ const FilterScreen = ({ navigation }) => {
       vegetarianFree: isVegetarian,
     };
 
-    console.log("app-", appledFilters);
+    dispatch(setFilters(appledFilters));
   }, [isGlutenFree, isVegan, isLactose, isVegetarian]);
 
   useEffect(() => {
