@@ -41,7 +41,6 @@ const FilterNav = () => {
                   onPress={() => {
                     const saveHandler = route.params?.save;
                     saveHandler();
-                    console.log("saving...");
                   }}
                 />
               </HeaderButtons>

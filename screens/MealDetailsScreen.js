@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image,
-  FlatList,
-} from "react-native";
+import { StyleSheet, Text, View, Image, FlatList } from "react-native";
+import { useSelector } from "react-redux";
+
 import DefaultText from "../components/DefaultText";
-import { MEALS } from "../data/data";
 
 const VirtualizedView = (props) => {
   return (
@@ -25,9 +19,10 @@ const VirtualizedView = (props) => {
 };
 
 const MealDetailsScreen = ({ route }) => {
+  const { meals } = useSelector((state) => state.meals);
   const { mealId } = route.params;
 
-  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  const selectedMeal = meals.find((meal) => meal.id === mealId);
 
   return (
     <VirtualizedView>
