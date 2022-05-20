@@ -49,9 +49,9 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-    alignItems: "flex-end",
+    alignItems: "center",
     padding: 10,
-    justifyContent: "flex-end",
+    justifyContent: "center",
     backgroundColor: "green",
   },
   title: {
