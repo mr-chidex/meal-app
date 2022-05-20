@@ -2,24 +2,24 @@ import { useState } from "react";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
-// import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
+// import { configureStore } from "@reduxjs/toolkit";
 
-// import mealsReducer from "./store/reducers/mealReducers";
 import mealsReducer from "./store/reducers/mealReducers";
+// import mealsReducer from "./store/reducers/mealReducers";
 import SideDrawer from "./navigations/SideDrawer";
 
-// const rootReducer = combineReducers({
-//   meals: mealsReducer,
-// });
-
-// const store = createStore(rootReducer);
-const store = configureStore({
-  reducer: {
-    meals: mealsReducer,
-  },
+const rootReducer = combineReducers({
+  meals: mealsReducer,
 });
+
+const store = createStore(rootReducer);
+// const store = configureStore({
+//   reducer: {
+//     meals: mealsReducer,
+//   },
+// });
 
 const fetchFonts = () => {
   return Font.loadAsync({

@@ -22,7 +22,6 @@ const FilterScreen = ({ navigation }) => {
   }, [isGlutenFree, isVegan, isLactose, isVegetarian]);
 
   useEffect(() => {
-    console.log("here");
     navigation.setParams({ save: saveHandler });
   }, [saveHandler]);
 

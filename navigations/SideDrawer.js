@@ -10,14 +10,20 @@ const Drawer = createDrawerNavigator();
 const SideDrawer = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Categories"
+      // initialRouteName="Categories"
       screenOptions={{
         headerShown: false,
         drawerActiveTintColor: colors.secondary,
         drawerLabelStyle: { fontFamily: "OpenSans-Bold" },
       }}
     >
-      <Drawer.Screen name="Meals" component={MealsTabNavigation} />
+      <Drawer.Screen
+        name="MealsFavs"
+        options={{
+          title: "Meals",
+        }}
+        component={MealsTabNavigation}
+      />
       <Drawer.Screen name="Filters" component={FilterNav} />
     </Drawer.Navigator>
   );

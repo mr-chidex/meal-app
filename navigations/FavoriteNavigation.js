@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useSelector } from "react-redux";
 
 import HeaderBtn from "../components/HeaderButton";
 import colors from "../constants/colors";
@@ -44,8 +45,8 @@ const FavoriteNavigation = () => {
             <HeaderButtons HeaderButtonComponent={HeaderBtn}>
               <Item
                 title="Favorite"
-                iconName="ios-star-outline"
-                onPress={() => console.log("mark as favorite")}
+                iconName={route.params?.isFav ? "ios-star" : "ios-star-outline"}
+                onPress={route.params.favToggle}
               />
             </HeaderButtons>
           ),

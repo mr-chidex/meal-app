@@ -1,9 +1,12 @@
 import React from "react";
 import { StyleSheet, FlatList, View, Text } from "react-native";
+import { useSelector } from "react-redux";
 
 import MealItem from "./mealItem";
 
 const MealList = ({ listData, navigation }) => {
+  const { favoriteMeals } = useSelector((state) => state.meals);
+
   return (
     <View style={styles.container}>
       {listData?.length === 0 && (
@@ -19,6 +22,7 @@ const MealList = ({ listData, navigation }) => {
               navigation.push("MealDetails", {
                 mealId: item.id,
                 mealTitle: item.title,
+                isFav: favoriteMeals.some((meal) => meal.id === item.id),
               })
             }
           />

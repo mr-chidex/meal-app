@@ -13,6 +13,7 @@ const Stack = createStackNavigator();
 const MealsNavigator = () => {
   return (
     <Stack.Navigator
+      initialRouteName="Categories"
       screenOptions={{
         headerTitleAlign: "center",
         headerStyle: {
@@ -60,8 +61,8 @@ const MealsNavigator = () => {
             <HeaderButtons HeaderButtonComponent={HeaderBtn}>
               <Item
                 title="Favorite"
-                iconName="ios-star-outline"
-                onPress={() => console.log("mark as favorite")}
+                iconName={route.params?.isFav ? "ios-star" : "ios-star-outline"}
+                onPress={route.params?.favToggle}
               />
             </HeaderButtons>
           ),

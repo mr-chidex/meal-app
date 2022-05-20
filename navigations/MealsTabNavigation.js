@@ -23,6 +23,7 @@ const MealsTabNavigation = () => {
         tabBarInactiveTintColor: "grey",
         tabBarLabelStyle: { fontFamily: "OpenSans-Bold" },
       }}
+      initialRouteName="Meals"
     >
       <Tab.Screen
         options={{

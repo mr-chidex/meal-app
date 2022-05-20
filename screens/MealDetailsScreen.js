@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import DefaultText from "../components/DefaultText";
+import { toggleFavorite } from "../store/actions/mealActions";
 
 const VirtualizedView = (props) => {
   return (
@@ -18,11 +19,27 @@ const VirtualizedView = (props) => {
   );
 };
 
-const MealDetailsScreen = ({ route }) => {
+const MealDetailsScreen = ({ route, navigation }) => {
   const { meals } = useSelector((state) => state.meals);
+  const dispatch = useDispatch();
   const { mealId } = route.params;
+  const currentMealIsFav = useSelector((state) =>
+    state.meals.favoriteMeals.some((meal) => meal.id === mealId)
+  );
 
   const selectedMeal = meals.find((meal) => meal.id === mealId);
+
+  const toggleFavs = useCallback(() => {
+    dispatch(toggleFavorite(mealId));
+  }, [mealId]);
+
+  useEffect(() => {
+    navigation.setParams({ favToggle: toggleFavs });
+  }, [toggleFavs]);
+
+  useEffect(() => {
+    navigation.setParams({ isFav: currentMealIsFav });
+  }, [currentMealIsFav]);
 
   return (
     <VirtualizedView>

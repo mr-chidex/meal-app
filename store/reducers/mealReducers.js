@@ -1,6 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-
 import { MEALS } from "../../data/data";
+import { TOGGLE_FAVORITE } from "../constants/mealConstants";
 
 const initialState = {
   meals: MEALS,
@@ -8,22 +7,32 @@ const initialState = {
   favoriteMeals: [],
 };
 
-const mealsSlice = createSlice({
-  name: "meals",
-  initialState,
-  reducers: {
-    favMeals(state, action) {},
-  },
-});
-
 const mealsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case TOGGLE_FAVORITE:
+      const existingFavIndex = state.favoriteMeals.findIndex(
+        (meal) => meal.id === payload.mealId
+      );
+
+      if (existingFavIndex >= 0) {
+        const updatedFav = [...state.favoriteMeals];
+        updatedFav.splice(existingFavIndex, 1);
+
+        return {
+          ...state,
+          favoriteMeals: updatedFav,
+        };
+      } else {
+        const newFav = state.meals.find((meal) => meal.id === payload.mealId);
+        return {
+          ...state,
+          favoriteMeals: [newFav, ...state.favoriteMeals],
+        };
+      }
+
     default:
       return state;
   }
 };
 
-export const { favMeals } = mealsSlice.actions;
-export default mealsSlice.reducer;
-
-// export default mealsReducer;
+export default mealsReducer;
